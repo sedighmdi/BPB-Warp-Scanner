@@ -46,9 +46,6 @@ var (
 	prompt   = fmtStr("●", GREEN, true)
 	errMark  = fmtStr("✗", RED, true)
 	succMark = fmtStr("✓", GREEN, true)
-	// ask      = fmtStr("-", "", true)
-	// info     = fmtStr("+", "", true)
-	// warning  = fmtStr("Warning", RED, true)
 	xrayPath string
 )
 
@@ -107,10 +104,10 @@ func generateEndpoints() {
 		4198, 4233, 4500, 5279, 5956, 7103, 7152, 7156, 7281, 7559, 8319, 8742, 8854, 8886,
 	}
 
-		ipv4Prefixes := []string{
+	ipv4Prefixes := []string{
+		"188.114.96.", "188.114.97.", "188.114.98.", "188.114.99.",
 		"162.159.192.", "162.159.193.", "162.159.195.",
 	}
-
 	ipv6Prefixes := []string{
 		"2606:4700:d0::", "2606:4700:d1::",
 	}
@@ -509,6 +506,9 @@ func main() {
 	}
 
 	sort.Slice(results, func(i, j int) bool {
+		if results[i].Loss != results[j].Loss {
+			return results[i].Loss < results[j].Loss
+		}
 		return results[i].Latency < results[j].Latency
 	})
 
