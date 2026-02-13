@@ -330,9 +330,9 @@ func main() {
 				var howMany string
 				fmt.Printf("\n\n%s Please enter your desired endpoints count: ", prompt)
 				fmt.Scanln(&howMany)
-				isValid, c := checkNum(howMany, 1, 10000)
+				isValid, c := checkNum(howMany, 1, 1000000)
 				if !isValid {
-					failMessage("Invalid input. Please enter a numeric value between 1-10000.")
+					failMessage("Invalid input. Please enter a numeric value between 1-1000000.")
 				} else {
 					scanConfig.EndpointCount = c
 					break
